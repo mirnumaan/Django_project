@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content%}
+<main class="tubers-page">
+    <div class="banner">
+      <img src="{% static './assets/images/bg-banner.png' %}" alt="" class="img-fluid w-100">
+      <h1 class="text-center">
+        Tubers
+      </h1>
+    </div>
+    {% include 'messages.html' %}
+
+
+    <section class="container mt-5 mb-5">
+      <div class="row ">
+        <div class="col-lg-11 mb-2 ">
+          <section class="tubers">
+
+
+
+            <!-- person 1 -->
+            {% for tuber in tubers %}
+            <div class="card border-0 text-center">
+              <div class="feature-text">
+                  <a a href="{% url 'youtubers_detail' tuber.id %}">
+                <img src="{{tuber.photo.url}}" class="card-img-top" alt="team-member">
+                </a>
+              </div>
+              <div class="card-body">
+                
+                <h5 class="card-title">{{tuber.name}}</h5>
+                
+                <p class="card-text">{{tuber.category}}</p>
+                <div class="person-description mt-2">
+                  <button class="btn btn-accent"> City :{{tuber.city}} </button>
+                  <button class="btn btn-accent"> Age :{{tuber.age}} </button>
+                  <button class="btn btn-accent"> Height : {{tuber.height}}</button>
+                </div>
+                <div class="person-description mt-2">
+                  <button class="btn btn-accent"> crew : {{tuber.crew}}</button>
+                  <button class="btn btn-accent"> camera_type :{{tuber.camera_type}} </button>
+                  <button class="btn btn-accent"> Subs : {{tuber.sub_count}}</button>
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+            <!-- person 1 -->
+        
+          </section>
+        </div>
+
+        
+      </div>
+      
+    </section>
+
+ 
+  </main>
+
+{% endblock %}
